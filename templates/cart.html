@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cart</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    {% include 'base_navbar.html' %}
+    <div class="container">
+        <h1 class="text-center">Cart</h1>
+        {% for cart_item in cart_items %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ cart_item.product.name }}</h5>
+                <p class="card-text">Quantity: {{ cart_item.quantity }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+     <div class="text-center mt-5">
+         <a href="{% url 'payment' %}" class="btn btn-lg btn-success">Go to Payment</a>
+     </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

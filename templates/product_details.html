@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .product-image {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .custom-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product-details-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .product-details-container .product-info {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base_navbar.html' %}
+    <div class="container custom-container">
+        <h1 class="text-center">Product Details</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-details-container">
+                    <div class="product-image-container">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                    </div>
+                    <div class="product-info">
+                        <h2>{{ product.name }}</h2>
+                        <p>{{ product.description }}</p>
+                        <p>Price: ${{ product.price }}</p>
+                        <p>Quantity: {{ product.quantity }}</p>
+                        <form method="post" action="{% url 'add_to_cart' product.id %}">
+                            {% csrf_token %}
+                            <input type="number" name="quantity" value="1" min="1" style="width: 32%">
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'payment' %}" class="btn btn-lg btn-success">Go to Payment</a>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

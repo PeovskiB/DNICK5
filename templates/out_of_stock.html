@@ -1,0 +1,27 @@
+<!-- out_of_stock.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Out of Stock</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base_navbar.html' %}
+    <div class="container">
+        <h1>Insufficient Stock</h1>
+        <p>The product you requested is currently out of stock.</p>
+        <a href="/" class="btn btn-primary">Back to Products</a>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

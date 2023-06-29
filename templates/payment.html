@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    {% include 'base_navbar.html' %}
+    <div class="container">
+        <h1>Payment</h1>
+        <form method="post" action="{% url 'payment' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_card_number">Card Number</label>
+                <input type="text" class="form-control" id="id_card_number" name="card_number">
+            </div>
+            <div class="form-group">
+                <label for="id_expiry_date">Expiry Date</label>
+                <input type="text" class="form-control" id="id_expiry_date" name="expiry_date">
+            </div>
+            <div class="form-group">
+                <label for="id_cvv">CVV</label>
+                <input type="text" class="form-control" id="id_cvv" name="cvv">
+            </div>
+            <button type="submit" class="btn btn-primary">Pay</button>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

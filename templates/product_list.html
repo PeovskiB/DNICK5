@@ -1,0 +1,81 @@
+<!-- product_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card {
+            height: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base_navbar.html' %}
+    <div class="container">
+        <h1>Product List</h1>
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <a href="{% url 'product_details' product.id %}">
+                            <img src="{{ MEDIA_URL }}{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <p class="card-text price">Price: ${{ product.price }}</p>
+                            <p class="card-text">Quantity: {{ product.quantity }}</p>
+                            {% if request.user.is_superuser %}
+                                <form action="{% url 'delete_product' product.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            {% else %}
+{#                                <form action="{% url 'add_to_cart' product.id %}" method="post" style="display: inline;">#}
+{#                                    {% csrf_token %}#}
+{#                                    <button type="submit" class="btn btn-primary">Add to Cart</button>#}
+{#                                </form>#}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

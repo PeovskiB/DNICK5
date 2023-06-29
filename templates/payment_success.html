@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Successful</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .checkmark-icon {
+            color: green;
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% include 'base_navbar.html' %}
+    <div class="container">
+        <div class="text-center">
+            <div class="checkmark-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h1>Payment Successful</h1>
+            <p>Your payment was successful. Thank you for your purchase!</p>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
